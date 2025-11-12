@@ -2,10 +2,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <pthread.h>
-#include <unistd.h>
+# include <unistd.h>
 
-
-int TAM_MATRIZES[] = {5000, 5000, 5000};
+int TAM_MATRIZES[] = {100, 500, 1000, 5000, 10000, 17000};
 int num_tam = sizeof(TAM_MATRIZES) / sizeof(TAM_MATRIZES[0]);
 
 // Informações para as threads
@@ -50,7 +49,7 @@ void main(void) {
     struct timeval start, end;
     long mtime, seconds, useconds;
 
-    long num_procs = sysconf(_SC_NPROCESSORS_ONLN);
+    long num_procs = 6;
     if (num_procs < 1) {
         // Fallback caso a chamada falhe
         num_procs = 1;
@@ -135,8 +134,8 @@ void main(void) {
         free(m2);
         free(prod);
 
-        sleep(60);
-        printf("Rodando novamente");
+        sleep(300);
+        printf("Rodando novamente\n");
     }
     fclose(file);
 }

@@ -1,9 +1,11 @@
 # include <sys/time.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include <omp.h>
 
-int TAM_MATRIZES[] = {10, 20, 40, 80, 160, 320, 640, 1280};
+
+int TAM_MATRIZES[] = {100, 500, 1000, 5000, 10000, 17000};
 int num_tam = sizeof(TAM_MATRIZES) / sizeof(TAM_MATRIZES[0]);
 
 void main(void) {
@@ -77,6 +79,8 @@ void main(void) {
         free(m1);
         free(m2);
         free(prod);
+        sleep(300);
+        printf("Rodando novamente\n");
     }
     fclose(file);
 }
